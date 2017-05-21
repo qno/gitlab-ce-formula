@@ -5,7 +5,7 @@
 #
 {% if section == 'main' -%}
 {% for property, value in properties.iteritems() -%}
-{{ property }} "{{ value }}"
+{{ property }} '{{ value }}'
 {% endfor %}
 {% else -%}
 {% for property, value in properties.iteritems() -%}
@@ -32,7 +32,12 @@
 {{ section }}['{{ property }}'] = {{ value }}
 {% elif section == 'nginx' and (
         property == 'listen_addresses' or
-        property == 'gzip_types'
+        property == 'gzip_types' or 
+        property == 'proxy_set_headers'
+   )
+-%}
+{% elif section == 'registry_nginx' and (
+        property == 'proxy_set_headers'
    )
 -%}
 {{ section }}['{{ property }}'] = {{ value }}
