@@ -36,6 +36,7 @@
         property == 'proxy_set_headers'
    )
 -%}
+{{ section }}['{{ property }}'] = {{ value }}
 {% elif section == 'registry_nginx' and (
         property == 'proxy_set_headers'
    )
